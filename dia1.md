@@ -237,3 +237,5 @@ En estos diagramas representamos otros a conceptos distintos a los que represent
 - Participantes: Siguen apareciendo, de la misma forma que en los diagramas de casos de uso.
 Pero... ambos 2 se representan en la misma linea horizontal. Y esa linea horizontal se pone por duplicado, donde cada actor/participante se une consigo mismo mediante lineas discontinuas verticales:
 - Comunicaciones: Flechas que indican la comunicación entre actores/participantes. Las flechas se ponen entre las lineas verticales. El orden de las flechas (de arriba a abajo) indica el orden de las comunicaciones.
+  - Flechas solidas con cabeza rellena      = Comunicaciones síncronas 
+  - Flechas discontinuas con cabeza rellena = Respuestas a comunicaciones síncronas

@@ -120,9 +120,67 @@ sequenceDiagram
     end
     end
 
-    rect rgb(230,230,255)
-    note right of C:        CONSEGUIR CANTIDAD
-        C -->> U: Cuántos billetes?
+
+    rect rgb(240,240,255)
+        note left of S:     SACAR DINERO
+
+        loop Hasta 3 intentos si la cantidad no es válida
+            rect rgb(230,230,255)
+                note left of C:         Cantidad
+                C-->>U:                 Solicitar cantidad
+                critical                     Esperar la cantidad la Cantidad
+                    U->>C:                  Escribe la cantidad
+                    opt                 Si no hay suficiente dinero o <BR/>no se le puede entregar
+                        C-->>U:         No hay tanto dinero o <BR/>debe introducir una cantidad <BR/>múltiplo del tipo de<BR/> billetes disponibles
+                    end
+                option                 No se ha introducido la cantidad en 30 segundos
+            rect rgb(255,230,230)
+                        break                 
+                            C->>U:                 No se puede procesar la operación
+                            C->>U:                 💳 Entrega la tarjeta
+                        end
+                        end
+                end
+            end 
+            rect rgb(230,230,255)
+
+        critical                Confirmar con el servidor
+        C->>S:                 Retirar importe solicitado
+        S-->>C:                OK
+        option                 No hay suficiente dinero en la cuenta
+            S-->>C:            No hay suficiente dinero
+            C-->>U:            No hay suficiente dinero
+        option                Error del servidor
+            rect rgb(255,230,230)
+            S-->>C:            Error del servidor
+            break                   Sistema no operativo
+                C->>U:                 No se puede procesar la operación
+                C->>U:                 💳 Entrega la tarjeta
+            end
+            end
+        option              Timeout
+            rect rgb(255,230,230)
+            break                   Sistema no operativo
+                C->>U:                 No se puede procesar la operación
+                C->>U:                 💳 Entrega la tarjeta
+            end
+            end
+        end
+        end
+        end
+                    rect rgb(230,230,255)
+        critical                Si no se ha conseguido una cantidad Correcta
+            rect rgb(255,230,230)
+                    break               
+                        C-->>U:         💳 Entrega la tarjeta
+                        C-->>U:         No se puede procesar la operación
+                    end
+                end
+            end
+            end
+
+        C-->>U:                 💳 Entrega la tarjeta
+        C-->>U:                 💰 Entrega el dinero
     end
 
 ```

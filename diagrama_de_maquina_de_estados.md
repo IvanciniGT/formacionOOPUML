@@ -11,7 +11,7 @@ Al modelar un sistema, muchas veces es útil pensar en términos de estados y tr
 (y hasta aquí llegan los modelos tradicionales de máquinas de estados)
 - Guardas                       Son condiciones que deben cumplirse para que se pueda realizar una transición de estados. Se representan entre corchetes en medio de las flechas.
 - Eventos:                      Son las causas externas que provocan las transiciones de estados. Los escribimos en medio de las flechas.
-- Acciones
+- Acciones/Contextos extendidos
 - Regiones paralelas
 - Tareas paralelas              Forks y Joins
 - Estados jerárquicos           Estados que se componen de otros estados (subestados)
@@ -29,6 +29,13 @@ Estados? Apagada, Encendida, Cargando, Sirviendo, Averiada
 
 Esto es un tema que UML resuelve, con el concepto de ESTADOS JERARQUICOS
 
+```mermaid
+stateDiagram-v2
+    direction LR
+    state Encendida 
+    Apagada     --> Encendida: Encender la máquina
+    Encendida   --> Apagada: Apagar la máquina
+```
 ```mermaid
 stateDiagram-v2
     direction LR

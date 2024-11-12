@@ -303,7 +303,7 @@ Una interfaz SOLO DEFINE la forma de llamar a las funciones, pero no el código.
             vvv                                                                     vvv
     SERVICIO DE BUSQUEDA ····> REPOSITORIO DE DICCIONARIOS <|······ REPOSITORIO DE DICCIONARIOS DE FICHEROS
                                         ^^
-                                        INTERFAZ / ABSTRACCION
+                                        INTERFAZ / ABSTRACCION / CONTRATO
                                         Un fichero que SOLO define la forma de llamar a las funciones, pero no el código.
 
 Y por cierto... lo que he ido definiendo ahí:
